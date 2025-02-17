@@ -1,1 +1,1 @@
-Code related to various [SteamGifts](https://www.steamgifts.com/discussions/puzzles-events) puzzle.
+Code related to various SteamGifts [puzzles](https://www.steamgifts.com/discussions/puzzles-events).

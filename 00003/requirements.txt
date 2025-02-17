@@ -1,0 +1,6 @@
+beautifulsoup4
+pyrate-limiter
+requests
+requests-ratelimiter
+tinydb
+urllib3

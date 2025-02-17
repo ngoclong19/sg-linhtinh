@@ -1,2 +1,182 @@
+[project]
+name = "sg-linhtinh"
+dynamic = ["version"]
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE.txt"]
+
+
 [tool.black]
 line-length = 80
+
+
+# This Pylint rcfile contains a best-effort configuration to uphold the
+# best-practices and style described in the Google Python style guide:
+#   https://google.github.io/styleguide/pyguide.html
+#
+# Its canonical open-source location is:
+#   https://google.github.io/styleguide/pylintrc
+[tool.pylint.main]
+ignore = ["third_party"]
+jobs = 4
+
+[tool.pylint.basic]
+argument-rgx = "^[a-z][a-z0-9_]*$"
+attr-rgx = "^_{0,2}[a-z][a-z0-9_]*$"
+class-attribute-rgx = "^(_?[A-Z][A-Z0-9_]*|__[a-z0-9_]+__|_?[a-z][a-z0-9_]*)$"
+class-rgx = "^_?[A-Z][a-zA-Z0-9]*$"
+const-rgx = "^(_?[A-Z][A-Z0-9_]*|__[a-z0-9_]+__|_?[a-z][a-z0-9_]*)$"
+docstring-min-length = 12
+function-rgx = "^(?:(?P<exempt>setUp|tearDown|setUpModule|tearDownModule)|(?P<camel_case>_?[A-Z][a-zA-Z0-9]*)|(?P<snake_case>_?[a-z][a-z0-9_]*))$"
+good-names = ["main", "_"]
+inlinevar-rgx = "^[a-z][a-z0-9_]*$"
+method-rgx = "(?x)^(?:(?P<exempt>_[a-z0-9_]+__|runTest|setUp|tearDown|setUpTestCase|tearDownTestCase|setupSelf|tearDownClass|setUpClass|(test|assert)_*[A-Z0-9][a-zA-Z0-9_]*|next)|(?P<camel_case>_{0,2}[A-Z][a-zA-Z0-9_]*)|(?P<snake_case>_{0,2}[a-z][a-z0-9_]*))$"
+module-rgx = "^(_?[a-z][a-z0-9_]*|__init__)$"
+no-docstring-rgx = "(__.*__|main|test.*|.*test|.*Test)$"
+property-classes = [
+    "abc.abstractproperty",
+    "cached_property.cached_property",
+    "cached_property.threaded_cached_property",
+    "cached_property.cached_property_with_ttl",
+    "cached_property.threaded_cached_property_with_ttl",
+]
+variable-rgx = "^[a-z][a-z0-9_]*$"
+
+[tool.pylint.classes]
+defining-attr-methods = ["__init__", "__new__", "setUp"]
+exclude-protected = ["_asdict", "_fields", "_replace", "_source", "_make"]
+valid-classmethod-first-arg = ["cls", "class_"]
+valid-metaclass-classmethod-first-arg = ["mcs"]
+
+[tool.pylint.format]
+ignore-long-lines = "(?x)(\n^\\s*(\\#\\ )?<?https?://\\S+>?$|\n^\\s*(from\\s+\\S+\\s+)?import\\s+.+$)"
+max-line-length = 80
+max-module-lines = 99999
+single-line-if-stmt = true
+
+[tool.pylint.imports]
+deprecated-modules = ["regsub", "TERMIOS", "Bastion", "rexec", "sets"]
+known-third-party = ["enchant", "absl"]
+
+[tool.pylint.logging]
+logging-modules = ["logging", "absl.logging", "tensorflow.io.logging"]
+
+[tool.pylint."messages control"]
+disable = [
+    "raw-checker-failed",
+    "bad-inline-option",
+    "locally-disabled",
+    "file-ignored",
+    "suppressed-message",
+    "useless-suppression",
+    "deprecated-pragma",
+    "use-symbolic-message-instead",
+    "use-implicit-booleaness-not-comparison-to-string",
+    "use-implicit-booleaness-not-comparison-to-zero",
+    "useless-option-value",
+    "literal-comparison",
+    "comparison-with-itself",
+    "comparison-of-constants",
+    "no-classmethod-decorator",
+    "no-staticmethod-decorator",
+    "useless-object-inheritance",
+    "property-with-parameters",
+    "too-many-ancestors",
+    "too-many-instance-attributes",
+    "too-few-public-methods",
+    "too-many-public-methods",
+    "too-many-return-statements",
+    "too-many-branches",
+    "too-many-arguments",
+    "too-many-locals",
+    "too-many-statements",
+    "too-many-boolean-expressions",
+    "too-many-positional-arguments",
+    "cyclic-import",
+    "consider-using-from-import",
+    "consider-merging-isinstance",
+    "too-many-nested-blocks",
+    "simplifiable-if-statement",
+    "redefined-argument-from-local",
+    "no-else-return",
+    "consider-using-ternary",
+    "trailing-comma-tuple",
+    "stop-iteration-return",
+    "simplify-boolean-expression",
+    "inconsistent-return-statements",
+    "useless-return",
+    "consider-swap-variables",
+    "consider-using-join",
+    "consider-using-in",
+    "consider-using-get",
+    "chained-comparison",
+    "consider-using-dict-comprehension",
+    "consider-using-set-comprehension",
+    "simplifiable-if-expression",
+    "no-else-raise",
+    "unnecessary-comprehension",
+    "consider-using-sys-exit",
+    "no-else-break",
+    "no-else-continue",
+    "super-with-arguments",
+    "simplifiable-condition",
+    "condition-evals-to-constant",
+    "consider-using-generator",
+    "use-a-generator",
+    "consider-using-min-builtin",
+    "consider-using-max-builtin",
+    "consider-using-with",
+    "unnecessary-dict-index-lookup",
+    "use-list-literal",
+    "use-dict-literal",
+    "unnecessary-list-index-lookup",
+    "use-yield-from",
+    "duplicate-code",
+    "abstract-method",
+    "arguments-differ",
+    "attribute-defined-outside-init",
+    "unknown-option-value",
+    "c-extension-no-member",
+    "consider-using-enumerate",
+    "fixme",
+    "global-statement",
+    "implicit-str-concat",
+    "import-error",
+    "import-self",
+    "missing-function-docstring",
+    "no-member",
+    "no-name-in-module",
+    "signature-differs",
+    "trailing-newlines",
+    "unnecessary-pass",
+    "useless-else-on-loop",
+    "wrong-import-order",
+]
+
+[tool.pylint.miscellaneous]
+notes = ["TODO"]
+
+[tool.pylint.reports]
+evaluation = "10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)"
+
+[tool.pylint.string]
+check-quote-consistency = true
+
+[tool.pylint.typecheck]
+contextmanager-decorators = [
+    "contextlib.contextmanager",
+    "contextlib2.contextmanager",
+]
+ignored-classes = ["optparse.Values", "thread._local", "_thread._local"]
+
+[tool.pylint.variables]
+callbacks = ["cb_", "_cb"]
+dummy-variables-rgx = "^\\*{0,2}(_$|unused_|dummy_)"
+ignored-argument-names = "_.*|^ignored_|^unused_"
+redefining-builtins-modules = [
+    "six",
+    "six.moves",
+    "past.builtins",
+    "future.builtins",
+    "functools",
+]
